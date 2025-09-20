@@ -1,100 +1,55 @@
-/* Global Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .home-container {
-  position: relative;
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
 
-  /* Image as the base background */
-  background: url('https://res.cloudinary.com/dqtskutwx/image/upload/v1758346973/Gemini_Generated_Image_gfz8oigfz8oigfz8_rymrqs.png');
+  /* Only background image */
+  background: url('https://res.cloudinary.com/dqtskutwx/image/upload/v1758348614/Gemini_Generated_Image_gfz8oigfz8oigfz8_twe75g.png');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 
+  color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  text-align: center;
-  overflow: hidden; /* make sure overlay stays contained */
+  padding: 0; /* remove padding so header aligns properly */
 }
 
-/* Gradient overlay */
-.home-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Header with logo */
+.header {
   width: 100%;
-  height: 100%;
-
-  background: linear-gradient(135deg, #f98b4c, #ed51a9, #9bff64);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-
-  opacity: 0.8; /* adjust visibility of the background image */
-  z-index: 0;
+  display: flex;
+  align-items: center;
+  background: #f1f5f9; /* light background bar */
+  padding: 15px 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Make sure content stays above overlay */
-.home-container > * {
-  position: relative;
-  z-index: 1;
+.header-logo {
+  height: 40px;
+  margin-right: 12px;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-
-/* Logo */
-.logo {
-  width: 180px;
-  margin-bottom: 20px;
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
 }
 
 /* Dropdown */
 .filter-select {
+  margin: 30px 0;
   padding: 10px 15px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
   background: #fff;
-  margin-bottom: 30px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  min-width: 200px;
+  transition: border 0.2s ease-in-out;
 }
 
-/* Make dropdown fully responsive */
-@media screen and (max-width: 768px) {
-  .filter-select {
-    font-size: 14px;
-    padding: 8px 12px;
-    width: 80%; /* takes 80% of available width */
-    max-width: 400px; /* avoids stretching too wide */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .filter-select {
-    width: 100%; /* full width on very small screens */
-    font-size: 14px;
-  }
+.filter-select:hover {
+  border-color: #2563eb;
 }
 
 /* Projects Grid */
@@ -104,8 +59,16 @@
   gap: 20px;
   width: 100%;
   max-width: 1200px;
-  padding: 0;
   list-style: none;
+  padding: 0 20px 40px;
+  margin: 0 auto;
+}
+
+/* Loader */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 /* Failure View */
@@ -122,11 +85,12 @@
 .failure-view h1 {
   font-size: 22px;
   margin: 20px 0 10px;
+  color: #1e293b;
 }
 
 .failure-view p {
   font-size: 16px;
-  color: #666;
+  color: #64748b;
   margin-bottom: 20px;
 }
 
@@ -145,36 +109,27 @@
   background: #1e40af;
 }
 
-/* Loader Center */
-.loader-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
-
 /* Responsive */
 @media screen and (max-width: 768px) {
-  .logo {
-    width: 140px;
+  .header-title {
+    font-size: 18px;
   }
 
   .filter-select {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
-  .failure-view h1 {
-    font-size: 20px;
-  }
-
-  .failure-view p {
+    width: 80%;
     font-size: 14px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .home-container {
-    padding: 15px;
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .header-logo {
+    margin: 0 0 8px 0;
   }
 
   .filter-select {

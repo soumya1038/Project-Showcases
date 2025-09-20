@@ -101,11 +101,14 @@ class Home extends Component {
     return (
       <>
         <div className="home-container">
-          <img
-            src="https://assets.ccbp.in/frontend/react-js/projects-showcase/website-logo-img.png"
-            alt="website logo"
-            className="logo"
-          />
+          <div className="header">
+            <img
+              src="https://assets.ccbp.in/frontend/react-js/projects-showcase/website-logo-img.png"
+              alt="website logo"
+              className="header-logo"
+            />
+          </div>
+
           <select className="filter-select" onChange={this.onSelectFilter}>
             {categoriesList.map(each => (
               <option key={each.id} value={each.id}>
@@ -113,6 +116,7 @@ class Home extends Component {
               </option>
             ))}
           </select>
+
           {this.renderAllComponents()}
         </div>
       </>
